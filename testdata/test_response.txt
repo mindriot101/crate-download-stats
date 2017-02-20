@@ -1,0 +1,374 @@
+{
+    "meta": {
+        "extra_downloads": [
+            {
+                "date": "2016-11-18",
+                "downloads": 4
+            },
+            {
+                "date": "2016-11-22",
+                "downloads": 12
+            },
+            {
+                "date": "2016-11-28",
+                "downloads": 7
+            },
+            {
+                "date": "2016-12-08",
+                "downloads": 4
+            },
+            {
+                "date": "2017-01-01",
+                "downloads": 8
+            },
+            {
+                "date": "2017-01-30",
+                "downloads": 60
+            },
+            {
+                "date": "2017-02-01",
+                "downloads": 8
+            },
+            {
+                "date": "2017-02-02",
+                "downloads": 69
+            },
+            {
+                "date": "2017-02-07",
+                "downloads": 4
+            }
+        ]
+    },
+    "version_downloads": [
+        {
+            "date": "2016-11-18T00:00:00Z",
+            "downloads": 6,
+            "id": 2265313,
+            "version": 36624
+        },
+        {
+            "date": "2016-11-18T00:00:00Z",
+            "downloads": 1,
+            "id": 2277345,
+            "version": 36205
+        },
+        {
+            "date": "2016-11-22T00:00:00Z",
+            "downloads": 5,
+            "id": 2312758,
+            "version": 36624
+        },
+        {
+            "date": "2016-11-22T00:00:00Z",
+            "downloads": 3,
+            "id": 2318180,
+            "version": 36205
+        },
+        {
+            "date": "2016-11-23T00:00:00Z",
+            "downloads": 2,
+            "id": 2350153,
+            "version": 36624
+        },
+        {
+            "date": "2016-11-24T00:00:00Z",
+            "downloads": 2,
+            "id": 2359083,
+            "version": 36624
+        },
+        {
+            "date": "2016-11-25T00:00:00Z",
+            "downloads": 3,
+            "id": 2367537,
+            "version": 36624
+        },
+        {
+            "date": "2016-11-28T00:00:00Z",
+            "downloads": 7,
+            "id": 2381809,
+            "version": 36624
+        },
+        {
+            "date": "2016-11-28T00:00:00Z",
+            "downloads": 2,
+            "id": 2396099,
+            "version": 36205
+        },
+        {
+            "date": "2016-11-30T00:00:00Z",
+            "downloads": 2,
+            "id": 2414612,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2423124,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-03T00:00:00Z",
+            "downloads": 1,
+            "id": 2433962,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-04T00:00:00Z",
+            "downloads": 1,
+            "id": 2440457,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-08T00:00:00Z",
+            "downloads": 1,
+            "id": 2469001,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-08T00:00:00Z",
+            "downloads": 1,
+            "id": 2469000,
+            "version": 36205
+        },
+        {
+            "date": "2016-12-14T00:00:00Z",
+            "downloads": 1,
+            "id": 2514150,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-15T00:00:00Z",
+            "downloads": 2,
+            "id": 2522776,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-16T00:00:00Z",
+            "downloads": 2,
+            "id": 2528653,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-22T00:00:00Z",
+            "downloads": 2,
+            "id": 2551644,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-23T00:00:00Z",
+            "downloads": 2,
+            "id": 2560252,
+            "version": 36624
+        },
+        {
+            "date": "2016-12-30T00:00:00Z",
+            "downloads": 4,
+            "id": 2594838,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2607863,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2607862,
+            "version": 36205
+        },
+        {
+            "date": "2017-01-04T00:00:00Z",
+            "downloads": 4,
+            "id": 2654529,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-05T00:00:00Z",
+            "downloads": 3,
+            "id": 2665674,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-07T00:00:00Z",
+            "downloads": 3,
+            "id": 2677351,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-10T00:00:00Z",
+            "downloads": 4,
+            "id": 2693168,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-13T00:00:00Z",
+            "downloads": 2,
+            "id": 2709714,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-20T00:00:00Z",
+            "downloads": 2,
+            "id": 2739666,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-21T00:00:00Z",
+            "downloads": 2,
+            "id": 2754382,
+            "version": 42943
+        },
+        {
+            "date": "2017-01-21T00:00:00Z",
+            "downloads": 2,
+            "id": 2748870,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-24T00:00:00Z",
+            "downloads": 2,
+            "id": 2766323,
+            "version": 42943
+        },
+        {
+            "date": "2017-01-25T00:00:00Z",
+            "downloads": 5,
+            "id": 2773620,
+            "version": 42943
+        },
+        {
+            "date": "2017-01-26T00:00:00Z",
+            "downloads": 3,
+            "id": 2784017,
+            "version": 42943
+        },
+        {
+            "date": "2017-01-27T00:00:00Z",
+            "downloads": 6,
+            "id": 2796865,
+            "version": 42943
+        },
+        {
+            "date": "2017-01-30T00:00:00Z",
+            "downloads": 8,
+            "id": 2854733,
+            "version": 36624
+        },
+        {
+            "date": "2017-01-30T00:00:00Z",
+            "downloads": 15,
+            "id": 2854722,
+            "version": 36205
+        },
+        {
+            "date": "2017-01-30T00:00:00Z",
+            "downloads": 9,
+            "id": 2854748,
+            "version": 42943
+        },
+        {
+            "date": "2017-01-31T00:00:00Z",
+            "downloads": 2,
+            "id": 2858142,
+            "version": 43875
+        },
+        {
+            "date": "2017-02-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2909094,
+            "version": 44218
+        },
+        {
+            "date": "2017-02-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2866061,
+            "version": 36205
+        },
+        {
+            "date": "2017-02-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2866071,
+            "version": 36624
+        },
+        {
+            "date": "2017-02-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2866087,
+            "version": 42943
+        },
+        {
+            "date": "2017-02-01T00:00:00Z",
+            "downloads": 2,
+            "id": 2866100,
+            "version": 43875
+        },
+        {
+            "date": "2017-02-02T00:00:00Z",
+            "downloads": 19,
+            "id": 2927603,
+            "version": 42943
+        },
+        {
+            "date": "2017-02-02T00:00:00Z",
+            "downloads": 18,
+            "id": 2927587,
+            "version": 36624
+        },
+        {
+            "date": "2017-02-02T00:00:00Z",
+            "downloads": 18,
+            "id": 2927574,
+            "version": 36205
+        },
+        {
+            "date": "2017-02-02T00:00:00Z",
+            "downloads": 17,
+            "id": 2927616,
+            "version": 43875
+        },
+        {
+            "date": "2017-02-02T00:00:00Z",
+            "downloads": 18,
+            "id": 2927573,
+            "version": 36205
+        },
+        {
+            "date": "2017-02-02T00:00:00Z",
+            "downloads": 19,
+            "id": 2911019,
+            "version": 44218
+        },
+        {
+            "date": "2017-02-07T00:00:00Z",
+            "downloads": 1,
+            "id": 3007781,
+            "version": 36205
+        },
+        {
+            "date": "2017-02-07T00:00:00Z",
+            "downloads": 1,
+            "id": 3007788,
+            "version": 36624
+        },
+        {
+            "date": "2017-02-07T00:00:00Z",
+            "downloads": 1,
+            "id": 3007795,
+            "version": 42943
+        },
+        {
+            "date": "2017-02-07T00:00:00Z",
+            "downloads": 1,
+            "id": 3007801,
+            "version": 43875
+        },
+        {
+            "date": "2017-02-07T00:00:00Z",
+            "downloads": 3,
+            "id": 2976450,
+            "version": 44218
+        }
+    ]
+}
