@@ -12,6 +12,7 @@ chrono = { version = "0.3", features = ["serde", "rustc-serialize"] }
 curl = { version = "0.4.6", optional = true }
 dotenv = "0.8.0"
 postgres = { git = "https://github.com/sfackler/rust-postgres", features = ["with-chrono"], rev = "09b078bdbb2ad901f6149d74348fa1195d6c7a84" }
+clap = "2.20.5"
 
 [features]
 fetch-remote = ["curl"]
