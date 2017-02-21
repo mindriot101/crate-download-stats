@@ -7,6 +7,7 @@ extern crate serde_json;
 extern crate chrono;
 extern crate postgres;
 extern crate dotenv;
+extern crate clap;
 
 #[cfg(feature="fetch-remote")]
 use curl::easy::Easy;
@@ -14,6 +15,7 @@ use chrono::prelude::*;
 
 mod models;
 mod database;
+mod cli;
 
 type Result<T> = ::std::result::Result<T, Box<std::error::Error>>;
 
@@ -32,12 +34,18 @@ fn main() {
 
 
 fn run() -> Result<()> {
-    let now_timestamp = UTC::now().timestamp();
-    let url = &format!("https://crates.io/api/v1/crates/fitsio/downloads?_={}",
-                       now_timestamp);
-    let raw_response = fetch_raw_response(url)?;
-    let parsed: models::DownloadInfo = serde_json::from_str(&raw_response)?;
-    database::upload(parsed.version_downloads)
+    let matches = cli::cmdline_args();
+    match matches.value_of("crate") {
+        Some(crate_name) => {
+            let now_timestamp = UTC::now().timestamp();
+            let url = &format!("https://crates.io/api/v1/crates/{}/downloads?_={}",
+                               crate_name, now_timestamp);
+            let raw_response = fetch_raw_response(url)?;
+            let parsed: models::DownloadInfo = serde_json::from_str(&raw_response)?;
+            database::upload(parsed.version_downloads, &crate_name)
+        },
+        None => Err("Could not parse crate name from the command line".into()),
+    }
 }
 
 #[cfg(feature="fetch-remote")]

@@ -4,16 +4,16 @@ use postgres::{Connection, TlsMode};
 use dotenv::dotenv;
 use std::env;
 
-pub fn upload(info: Vec<models::VersionDownload>) -> Result<()> {
+pub fn upload(info: Vec<models::VersionDownload>, crate_name: &str) -> Result<()> {
     let connection = establish_connection()?;
     reset_database(&connection)?;
 
     for entry in info {
         let trans = connection.transaction()?;
         trans.execute("INSERT INTO crate_downloads (
-        id, date, downloads, version) VALUES \
-                      ($1, $2, $3, $4)",
-                     &[&entry.id, &entry.date, &entry.downloads, &entry.version])
+        id, date, downloads, version, crate_name) VALUES \
+                      ($1, $2, $3, $4, $5)",
+                     &[&entry.id, &entry.date, &entry.downloads, &entry.version, &crate_name])
             .unwrap_or(0);
         trans.commit().unwrap_or(());
     }
@@ -30,14 +30,12 @@ fn establish_connection() -> Result<Connection> {
 
 fn create_table(conn: &Connection) -> Result<()> {
     conn.execute("CREATE TABLE IF NOT EXISTS crate_downloads (
-        id SERIAL PRIMARY KEY,
-        date \
-                  TIMESTAMP WITH TIME ZONE NOT NULL,
-        downloads BIGINT NOT NULL,
-        \
-                  version INTEGER NOT NULL
-)",
-                 &[])?;
+            id SERIAL PRIMARY KEY,
+            crate_name VARCHAR NOT NULL,
+            date TIMESTAMP WITH TIME ZONE NOT NULL,
+            downloads BIGINT NOT NULL,
+            version INTEGER NOT NULL
+        )", &[])?;
     Ok(())
 }
 
