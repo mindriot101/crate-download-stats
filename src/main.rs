@@ -10,39 +10,14 @@ extern crate dotenv;
 
 #[cfg(feature="fetch-remote")]
 use curl::easy::Easy;
-
 use chrono::prelude::*;
-
 use dotenv::dotenv;
 use std::env;
 use postgres::{Connection, TlsMode};
 
+mod models;
+
 type Result<T> = ::std::result::Result<T, Box<std::error::Error>>;
-
-#[derive(Debug, Serialize, Deserialize)]
-struct DownloadInfo {
-    meta: Downloads,
-    version_downloads: Vec<VersionDownload>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct Downloads {
-    extra_downloads: Vec<BasicDownload>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct BasicDownload {
-    date: NaiveDate,
-    downloads: usize,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct VersionDownload {
-    date: DateTime<UTC>,
-    downloads: i64,
-    id: i32,
-    version: i32,
-}
 
 fn main() {
     if let Err(e) = run() {
@@ -89,7 +64,7 @@ fn reset_database(conn: &Connection) -> Result<()> {
     Ok(())
 }
 
-fn upload(info: Vec<VersionDownload>) -> Result<()> {
+fn upload(info: Vec<models::VersionDownload>) -> Result<()> {
     let connection = establish_connection()?;
     reset_database(&connection)?;
 
@@ -111,7 +86,7 @@ fn run() -> Result<()> {
     let url = &format!("https://crates.io/api/v1/crates/fitsio/downloads?_={}",
                        now_timestamp);
     let raw_response = fetch_raw_response(url)?;
-    let parsed: DownloadInfo = serde_json::from_str(&raw_response)?;
+    let parsed: models::DownloadInfo = serde_json::from_str(&raw_response)?;
     upload(parsed.version_downloads)
 }
 
