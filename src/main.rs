@@ -1,8 +1,5 @@
 #[cfg(feature="fetch-remote")]
-extern crate hyper;
-
-#[cfg(feature="fetch-remote")]
-extern crate hyper_native_tls;
+extern crate curl;
 
 #[macro_use]
 extern crate serde_derive;
@@ -11,19 +8,9 @@ extern crate chrono;
 extern crate postgres;
 extern crate dotenv;
 
-use std::io::Read;
-
 #[cfg(feature="fetch-remote")]
-use hyper::Client;
+use curl::easy::Easy;
 
-#[cfg(feature="fetch-remote")]
-use hyper::header::Accept;
-
-#[cfg(feature="fetch-remote")]
-use hyper::net::HttpsConnector;
-
-#[cfg(feature="fetch-remote")]
-use hyper_native_tls::NativeTlsClient;
 use chrono::prelude::*;
 
 use dotenv::dotenv;
@@ -105,12 +92,13 @@ fn reset_database(conn: &Connection) -> Result<()> {
 fn upload(info: Vec<VersionDownload>) -> Result<()> {
     let connection = establish_connection()?;
     reset_database(&connection)?;
-    
+
     for entry in info {
         let trans = connection.transaction()?;
         trans.execute("INSERT INTO crate_downloads (
-        id, date, downloads, version) VALUES ($1, $2, $3, $4)",
-                      &[&entry.id, &entry.date, &entry.downloads, &entry.version])
+        id, date, downloads, version) VALUES \
+                      ($1, $2, $3, $4)",
+                     &[&entry.id, &entry.date, &entry.downloads, &entry.version])
             .unwrap_or(0);
         trans.commit().unwrap_or(());
     }
@@ -129,20 +117,22 @@ fn run() -> Result<()> {
 
 #[cfg(feature="fetch-remote")]
 fn fetch_raw_response(url: &str) -> Result<String> {
-    let ssl = NativeTlsClient::new()?;
-    let connector = HttpsConnector::new(ssl);
-    let client = Client::with_connector(connector);
-    let mut res = client.get(url)
-        .header(Accept::json())
-        .send()?;
-    if res.status != hyper::Ok {
-        return Err("Error sending client request".into());
+    let mut easy = Easy::new();
+    let mut dst = Vec::new();
+    easy.url(url)?;
+
+    {
+        let mut transfer = easy.transfer();
+        transfer.write_function(|data| {
+            dst.extend_from_slice(data);
+            Ok(data.len())
+        })?;
+
+        transfer.perform()?;
     }
 
-    let mut body = String::new();
-    res.read_to_string(&mut body)?;
-
-    Ok(body)
+    let result = String::from_utf8(dst)?;
+    Ok(result)
 }
 
 #[cfg(not(feature="fetch-remote"))]
