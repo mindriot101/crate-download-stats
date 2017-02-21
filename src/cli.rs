@@ -6,6 +6,7 @@ pub fn cmdline_args<'a>() -> ArgMatches<'a> {
              .long("crate")
              .short("c")
              .required(true)
+             .multiple(true)
              .takes_value(true))
         .get_matches();
     matches

@@ -35,14 +35,17 @@ fn main() {
 
 fn run() -> Result<()> {
     let matches = cli::cmdline_args();
-    match matches.value_of("crate") {
-        Some(crate_name) => {
+    match matches.values_of("crate") {
+        Some(crate_names) => {
             let now_timestamp = UTC::now().timestamp();
-            let url = &format!("https://crates.io/api/v1/crates/{}/downloads?_={}",
-                               crate_name, now_timestamp);
-            let raw_response = fetch_raw_response(url)?;
-            let parsed: models::DownloadInfo = serde_json::from_str(&raw_response)?;
-            database::upload(parsed.version_downloads, &crate_name)
+            for crate_name in crate_names {
+                let url = &format!("https://crates.io/api/v1/crates/{}/downloads?_={}",
+                                crate_name, now_timestamp);
+                let raw_response = fetch_raw_response(url)?;
+                let parsed: models::DownloadInfo = serde_json::from_str(&raw_response)?;
+                database::upload(parsed.version_downloads, &crate_name)?;
+            }
+            Ok(())
         },
         None => Err("Could not parse crate name from the command line".into()),
     }
